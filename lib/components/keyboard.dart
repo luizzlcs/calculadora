@@ -1,5 +1,6 @@
 import 'package:calculadora/components/button.dart';
 import 'package:calculadora/components/button_row.dart';
+import 'package:calculadora/constants/plataforms.dart';
 import 'package:flutter/material.dart';
 
 class Keyboard extends StatelessWidget {
@@ -9,8 +10,13 @@ class Keyboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 500,
+    return Container(
+      constraints: BoxConstraints(
+        maxWidth: IS_DESKTOP ? 300 : 300,
+        maxHeight: IS_DESKTOP ? 300 : 300,
+        minHeight: IS_DESKTOP ? 300 : 300,
+        minWidth: IS_DESKTOP ? 300 : 300,
+      ),
       child: Column(children: <Widget>[
         ButtonRow(
           buttons: [

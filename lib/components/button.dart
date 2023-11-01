@@ -1,3 +1,4 @@
+import 'package:calculadora/constants/plataforms.dart';
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
@@ -15,23 +16,23 @@ class Button extends StatelessWidget {
     this.color = standart,
     required this.cb,
     required this.text,
-    super.key,    
-  }); 
-  
+    super.key,
+  });
+
   const Button.big({
     required this.cb,
     this.big = true,
     this.color = standart,
     required this.text,
-    super.key,    
+    super.key,
   });
-  
+
   const Button.operation({
     required this.cb,
     this.big = false,
     this.color = operations,
     required this.text,
-    super.key,    
+    super.key,
   });
 
   @override
@@ -40,15 +41,25 @@ class Button extends StatelessWidget {
       flex: big ? 2 : 1,
       child: Padding(
         padding: const EdgeInsets.all(1.0),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: color,
-          ),          
-          onPressed: ()=> cb(text),
-          child: Text(
-            text,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 32, fontWeight: FontWeight.w200),
+        child: Container(
+          constraints: BoxConstraints(
+            maxWidth: IS_DESKTOP ? 10 : 10,
+            maxHeight: IS_DESKTOP ? 10 : 10,
+            minHeight: IS_DESKTOP ? 10 : 10,
+            minWidth: IS_DESKTOP ? 10 : 10,
+          ),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: color,
+            ),
+            onPressed: () => cb(text),
+            child: Text(
+              text,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.w200),
+            ),
           ),
         ),
       ),
